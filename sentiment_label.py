@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 import json
 import re
-key="AIzaSyBWRLDVYtpArqJouuXjZlJxk-CTWau1xlE"
+key=""
 address="https://language.googleapis.com/v1beta2/documents:analyzeSentiment?key="
 url= address + key
 
