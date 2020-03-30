@@ -1,6 +1,6 @@
 ## SECTION 1 : PROJECT TITLE
 ### Telecom  Sentinel:  Twitter  Sentiment  Analysis  of  Customer  Experience Feedback  of  Singapore  Telecom  Companies
-<p align="center"> <img src="https://github.com/Aksh97/Sentiment/blob/master/logo.png" width="200" height="200"
+<p align="center"> <img src="https://github.com/Aksh97/Sentiment/blob/master/logo.png" width="300" height="200"
      style="float: left; margin-right: 0px; " ></p>
 
 
