@@ -22,13 +22,16 @@ take timely actions for improving the future customer experience and avoiding cu
 
 | Full Name | Student ID | Contribution | Email |
 | :------------ |:---------------:|:------------ |:---------------:| 
-| Akshay Sachdeva | A0198532W | Project idea, Twitter Data Scraping, Fine Tuned Tranformer Model, Deep Learning Chatbot, Project Report, Video Creation, Testing, Miscellaneous Documentation, Dockerizing and AWS Deployment,CI/CD Pipeline | e0402073@u.nus.edu |
+| Akshay Sachdeva | A0198532W | Project idea, Twitter Data Scraping, Fine Tuned Tranformer Model(Sentiment Analysis), Deep Learning Chatbot, Project Report, Video Creation, Testing, Miscellaneous Documentation, Dockerizing and AWS Deployment,CI/CD Pipeline | e0402073@u.nus.edu |
 | Aniket Mohan Arasanipalai | A0198481N | Project idea, Twitter Data Scraping, BERT Sentiment Analysis Model, Project Report, Video Editing, Testing, Miscellanous Documentation | e0402022@u.nus.edu |
-| Sidhant Naveria |A0198485H | Project Idea,BERT Sentiment Analysis Model, Grievance Extraction, User Guide, Miscellaneous Documentation | sidhantnaveria@u.nus.edu|
-| Tarun Rajkumar | A0198522X| Project Idea, ChartJS Dashboard, Script Integration, Video Creation, Testing, Miscellaneous Documentation  ||
+| Sidhant Naveria |A0198485H | Project Idea,BERT Sentiment Analysis Model, Grievance Extraction, User Guide, Testing, Miscellaneous Documentation | sidhantnaveria@u.nus.edu|
+| Tarun Rajkumar | A0198522X| Project Idea, ChartJS Dashboard, Model Training, Script Integration, Video Creation, Testing, Miscellaneous Documentation  |Tarun.rajkumar@u.nus.edu|
 
 
 ---
 ## SECTION 4 : VIDEO OF SYSTEM MODELLING & USE CASE DEMO
-https://youtu.be/dAP6SnTM71U
+
+
+[![Demo Video](https://github.com/Aksh97/Sentiment/blob/master/Miscellaneous/screen.png)](https://youtu.be/dAP6SnTM71U)
+
 
