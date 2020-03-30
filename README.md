@@ -31,7 +31,7 @@ take timely actions for improving the future customer experience and avoiding cu
 ---
 ## SECTION 4 : VIDEO OF SYSTEM MODELLING & USE CASE DEMO
 
-[Demo Video](https://github.com/Aksh97/Sentiment/blob/master/Video/Telecom%20Sentinal.mov)
+
 [![Demo Video](https://github.com/Aksh97/Sentiment/blob/master/Miscellaneous/screen.png)](https://youtu.be/dAP6SnTM71U)
 
 
