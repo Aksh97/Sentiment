@@ -1,0 +1,152 @@
+{
+    "intents": [{
+            "tag": "greeting",
+            "patterns": ["Hi there", "How are you", "Is anyone there?", "Hey", "Hola", "Hello", "Good day"],
+            "responses": ["Hello, thanks for asking", "Good to see you again", "Hi there, how can I help?"],
+            "context": [""]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+            "responses": [" Thank you for reaching out to Sentinal. We are continuously working on updating this dashboard. Please reach out to telsentinal@taas.com in case of any queries."],
+            "context": [""]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+            "responses": ["Happy to help!", "Any time!", "My pleasure"],
+            "context": [""]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [],
+            "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+            "context": [""]
+        },
+        {
+            "tag": "options",
+            "patterns": ["How you could help me?", "Who are you", "What you can do?", "What help you provide?", "How you can be helpful?", "What support is offered"],
+            "responses": ["Hi, I am Sentinal. I can help you with text ananlysis of twitter data for major telecoms in Singapore", "I perform sentiment analysis on the twitter data, to help the customers and Clients"],
+            "context": [""]
+        },
+        {
+            "tag": "num_neg_tweet_Singtel",
+            "patterns": ["number of Negative tweets for this month for Singtel","What are the number of negative tweet of Jan 2019 for Singtel?", "number of negative tweet of March 2018 for Singtel", "number of negative tweet of this month for Singtel", "Negative tweet for singtel in May 2020", "Negative tweet for Singtel in April 2020"],
+            "responses": ["34 tweets", "36 tweets", "32 tweets", "31 tweets", "30 tweets", "28 tweets", "38 tweets", " 34 tweets"],
+            "context": [""]
+        },
+        {
+            "tag": "num_neg_tweet_Starhub",
+            "patterns": ["number of Negative tweets for this month for Starhub","What are the number of negative tweet of Jan 2019 for Starhub?", "number of negative tweet of March 2018 for Starhub", "number of negative tweet of this month for Starhub", "Negative tweet for starhub in May 2020", "Negative tweet for Starhub in April 2020"],
+            "responses": ["44 tweets", "32 tweets", "19 tweets", "18 tweets", "32 tweets", "20 tweets", "34 tweets", " 27 tweets"],
+            "context": [""]
+        },
+        {
+            "tag": "num_neg_tweet_M1",
+            "patterns": ["number of Negative tweets for this month for M1","What are the number of negative tweet of Jan 2019 for M1?", "number of negative tweet of March 2018 for M1", "number of negative tweet of this month for M1", "Negative tweet for M1 in May 2020", "Negative tweet for M1 in April 2020"],
+            "responses": ["21 tweets", "22 tweets", "29 tweets", "28 tweets", "24 tweets", "20 tweets", "26 tweets", " 27 tweets"],
+            "context": [""]
+        },
+        {
+            "tag": "num_pos_tweet_Singtel",
+            "patterns": ["number of positive tweet of Jan 2019 for Singtel?", "What are the number of positive tweet of Jan 2019 for Singtel?", "number of positive tweet of March 2018 for Singtel", "number of positive tweet of this month for Singtel", "Positive tweet for singtel in May 2020", "Positive tweet for Singtel in April 2020"],
+            "responses": ["74 tweets", "76 tweets", "68 tweets", "62 tweets", "67 tweets", "57 tweets", "71 tweets", " 68tweets"],
+            "context": [""]
+        },
+        {
+            "tag": "num_pos_tweet_Starhub",
+            "patterns": ["positive tweet of Jan 2019 for Starhub?","Positve tweets for this month for Starhub","What are the number of positive tweet of Jan 2019 for Starhub?", "number of positive tweet of March 2018 for Starhub", "number of positive tweet of this month for Starhub", "Positive tweet for starhub in May 2020", "Positive tweet for Starhub in April 2020"],
+            "responses": ["22 tweets", "16 tweets", "9 tweets", "7 tweets", "17 tweets", "10 tweets", "18 tweets", " 20 tweets"],
+            "context": [""]
+        },
+        {
+            "tag": "num_pos_tweet_M1",
+            "patterns": ["Positve tweets for this month for M1","positive tweet of Jan 2019 for M1?","What are the number of positive tweet of Jan 2019 for M1?", "number of positive tweet of March 2018 for M1", "number of positive tweet of this month for M1", "Positive tweet for M1 in May 2020", "Positive tweet for M1 in April 2020"],
+            "responses": ["11 tweets", "12 tweets", "19 tweets", "18 tweets", "12 tweets", "10 tweets", "14 tweets", "17 tweets"],
+            "context": [""]
+        },
+        {
+            "tag": "grievances",
+            "patterns": ["What was the grievance most talked about in 2019", "Most common grievance", "grievances", "grievances by people tweeted about Singtel"],
+            "responses": ["The grievance most taked on twitter was the products and plan benefits"],
+            "context": [""]
+        },
+        {
+            "tag": "highest_tweets",
+            "patterns": ["Which month recorded highest number of tweets", "Most number of tweets", "Highest tweeted month", "When was Singtel most taked ?"],
+            "responses": ["October 2018 recorded most number of tweets due to change in their plans"],
+            "context": [""]
+        },
+        {
+            "tag": "lowest_tweets",
+            "patterns": ["Lowest number of tweets", "lowest tweets for Singtel", "Which month recorded the lowest number of tweets", "less tweets were recorded in which month"],
+            "responses": ["March 2017 recorded lowest number of tweets in 2019"],
+            "context": [""]
+        },
+
+        {
+            "tag": "most_retweeted",
+            "patterns": ["Which was the most retweeted tweet", "Most popular tweet for Singtel", "Most liked tweet for Singtel", "Retweeted tweet", "intesresting tweet of 2019"],
+            "responses": ["4062 time retweeted tweet was @NCTsmtown_DREAM will be visiting  with their new concert NCT DREAM"],
+            "context": [""]
+        },
+        {
+            "tag": "other_telecom",
+            "patterns": ["Which other telecom was discussed apart from Singtel in tweets", "competition", "Which other telecom was most discussed?", "Who holds biggest competition with Singtel?"],
+            "responses": ["Singtel holds biggest competition and is compared with Starhub maximum time"],
+            "context": []
+        },
+        {
+            "tag": "Churning",
+            "patterns": ["How many users shoutout of leaving on twitter?", "Leaving", "How many people left after announcing on twitter?", "How many people churned after shoutout?"],
+            "responses": ["Approx 1240 people talked about leaving Singtel on twitter in 2019"],
+            "context": [""]
+        },
+        {
+            "tag": "Singtel_growth",
+            "patterns": ["Did negative tweets impacted growth for Singtel?", "What was the impact of growth of Singtel based on tweets?", "Impact of growth based on tweets"],
+            "responses": ["Yes, March had most number of negative tweets and fall in stock prices "],
+            "context": []
+        },
+        {
+            "tag": "Most_positive",
+            "patterns": ["Which month in 2018 had the most positive tweets for Starhub", "Which month in 2019 had the most positive tweets for M1", "Which month in 2019 had the most Positive tweets for Singtel", "Which month in 2019 had the most Positive tweets for Starhub"],
+            "responses": ["April recorded most Positive tweets", "September recorded the most positive tweets", "December recorded most positive tweets"],
+            "context": []
+        },
+        {
+            "tag": "Most_negative",
+            "patterns": ["Which month in 2018 had the most negative tweets for Starhub", "Which month in 2019 had the most negative tweets for M1", "Which month in 2019 had the most negative tweets for Singtel", "Which month in 2019 had the most negative tweets for Starhub"],
+            "responses": ["May recorded most negative tweets", "June recorded most negative tweets", "October recorded most negative tweets"],
+            "context": []
+        },
+        {
+            "tag": "sentiment",
+            "patterns": ["Tell me the sentiments of the day for Starhub!", "Sentiments of march 2018 for Singtel", "Starhub sentiments from Jan 2018", "Tell me the sentiments of the day for M1!", "Sentiments of march 2018 for M1", "Singtel sentiments from Jan 2018"],
+            "responses": [" "],
+            "context": []
+        },
+        {
+            "tag": " user",
+            "patterns": ["Which user had the most tweets in December 2019? ", "Which user had the most tweets in Jan 2018?", "Which user had the most tweets in September 2019?"],
+            "responses": ["Allen Kelly had the most number of tweets", "Kai Hendry had the most number of tweets", "Sebastiaan Deckers had the most number of tweets"],
+            "context": []
+        },
+        {
+            "tag": " Recommend",
+            "patterns": [" Can you recommend which area should be improved based on tweets in 2019 for Singtel?  ", "recommend", " Can you recommend which area should be improved based on tweets in 2018 for M1? ", " Can you recommend which area should be improved based on tweets in 2019 for Starhub? "],
+            "responses": ["The company must improvise on Internet Plans", "The company must improvise on Network Connectivity", "The company must improvise on International Roaming Plans"],
+            "context": []
+        },
+        {
+            "tag": " Refresh",
+            "patterns": [" Can you tell me when the dashboard be refreshed again?  ", "refresh", " dashboard refreshed again? "],
+            "responses": [" Dashboard gets refreshed every 12:00 am for performing analysis of the tweets for that day"],
+            "context": []
+        }
+
+
+
+
+    ]
+}

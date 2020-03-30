@@ -1,0 +1,132 @@
+{% extends "base-site.html" %}
+
+{% block title %} Chatbot {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<style>
+
+.chat-container {
+  /*margin: 0px;*/
+  padding: 10px;
+  width: 800px;
+  /* margin: 35px 0px; */
+  margin-left: 10%;
+  margin-right: 15%;
+}
+
+.chat-message {
+  padding: 6px;
+  border-radius: 6px;
+  margin-bottom: 3px;
+}
+
+.bot-message {
+  background: rgba(89, 82, 80, 0.89);
+  max-width: 300px;
+  color: white;
+  margin-left: auto;
+}
+
+.human-message {
+  background: dodgerblue;
+  max-width: 300px;
+  color: white;
+  margin: 13px 1px;
+}
+#chat_input {
+    width: 500px;
+    /*margin: 35px 0px; */
+    background-color: rgba(0, 117, 171, 0.11);
+    border-radius: 3px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+input{
+    padding: 5px;
+    height: 40px;
+    color: white !important;
+    border: hidden;
+}
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="container h-100">
+    <div class="row align-items-center h-100">
+        <div class="col-md-8 col-sm-12 mx-auto">
+            <div class="h-100 justify-content-center">
+                <div class="chat-container" style="overflow: auto; max-height: 80vh">
+                    <!-- chat messages -->
+                    <div class="chat-message col-md-5 offset-md-7 bot-message">
+                        Hi there, I'm Sentinal! How can I help you ?
+                    </div>
+                </div>
+                <div style="margin-left:15% ">
+                    <form id="chat_target">
+                    <input id="chat_input" class="input" type="text" value="" placeholder="   Enter message..."
+                           />
+                    <input type="submit" hidden>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+function submit_message(message) {
+        console.log(message);
+        $.post( "/chat", {message: message}, handle_response);
+
+        function handle_response(data) {
+          // append the bot repsonse to the div
+          $('.chat-container').append(`
+                <div class="chat-message col-md-5 offset-md-7 bot-message">
+                    ${data}
+                </div>
+          `)
+          // remove the loading indicator
+          $( "#loading" ).remove();
+        }
+    }
+$('#chat_target').on('submit', function (e) {
+    e.preventDefault();
+
+    const input_message = $('#chat_input').val();
+
+    // return if the user does not enter any text
+    if (!input_message) {
+        return
+    }
+
+    $('.chat-container').append(`
+            <div class="chat-message col-md-5 human-message">
+                ${input_message}
+            </div>
+        `)
+
+    // loading
+    $('.chat-container').append(`
+            <div class="chat-message text-center col-md-2 offset-md-10 bot-message" id="loading">
+                <b>...</b>
+            </div>
+        `)
+
+    // clear the text input
+    $('#chat_input').val('');
+
+    // send the message
+    submit_message(input_message)
+});
+
+</script>
+{% endblock javascripts %}

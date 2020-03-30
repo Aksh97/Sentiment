@@ -1,0 +1,19 @@
+pandas
+sklearn
+tenserflow 1.13.1
+tenserflow-hub 0.7.2
+bert
+tensorflow keras 2.2.4
+flask
+
+requests
+
+pandasrequests
+numpy
+
+nltk
+
+pickle-mixin
+
+
+keras

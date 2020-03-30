@@ -1,0 +1,596 @@
+{% extends "base-site.html" %}
+
+{% block title %} Chatbot {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+    <style>
+.card-body{
+    height:300px;
+    }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- content -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Singtel Positive Tweets</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="SinPositive"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Singtel Negative Tweets</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="SinNegative"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">StarHub Positive Tweets</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="StarPositive"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">StarHub Negative Tweets</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="StarNegative"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">M1 Positive Tweets</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="MPositive"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">M1 Negative Tweets</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-send text-success"></i></h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="MNegative"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script>
+        //SINGTEL
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        var chart_labels = {{ pos_data|safe }}[0];
+        var chart_data = {{ pos_data|safe }}[1];
+        gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+
+            tooltips: {
+                backgroundColor: '#f5f5f5',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(29,140,248,0.0)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        suggestedMin: 60,
+                        suggestedMax: 125,
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(225,78,202,0.1)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }]
+            }
+        };
+        var ctx = document.getElementById("SinPositive").getContext('2d');
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+        var config = {
+            type: 'line',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    label: "Tweets",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#6ed33c',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#52d333',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: chart_data,
+                }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+        };
+        var myChartData = new Chart(ctx, config);
+        var chart_labels = {{ neg_data|safe }}[0];
+        var chart_data = {{ neg_data|safe }}[1];
+        gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+
+            tooltips: {
+                backgroundColor: '#f5f5f5',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(29,140,248,0.0)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        suggestedMin: 60,
+                        suggestedMax: 125,
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(225,78,202,0.1)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }]
+            }
+        };
+        var ctx = document.getElementById("SinNegative").getContext('2d');
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+        var config = {
+            type: 'line',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    label: "Tweets",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#d30511',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#d30015',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: chart_data,
+                }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+        };
+        var myChartData = new Chart(ctx, config);
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //STARHUB
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+         var chart_labels = {{ pos_data_star|safe }}[0];
+        var chart_data = {{ pos_data_star|safe }}[1];
+        gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+
+            tooltips: {
+                backgroundColor: '#f5f5f5',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(29,140,248,0.0)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        suggestedMin: 60,
+                        suggestedMax: 125,
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(225,78,202,0.1)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }]
+            }
+        };
+        var ctx = document.getElementById("StarPositive").getContext('2d');
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+        var config = {
+            type: 'line',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    label: "Tweets",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#6ed33c',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#52d333',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: chart_data,
+                }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+        };
+        var myChartData = new Chart(ctx, config);
+        var chart_labels = {{ neg_data_star|safe }}[0];
+        var chart_data = {{ neg_data_star|safe }}[1];
+        gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+
+            tooltips: {
+                backgroundColor: '#f5f5f5',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(29,140,248,0.0)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        suggestedMin: 60,
+                        suggestedMax: 125,
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(225,78,202,0.1)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }]
+            }
+        };
+        var ctx = document.getElementById("StarNegative").getContext('2d');
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+        var config = {
+            type: 'line',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    label: "Tweets",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#d30511',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#d30015',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: chart_data,
+                }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+        };
+        var myChartData = new Chart(ctx, config);
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        //M1
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+          var chart_labels = {{ pos_data_m|safe }}[0];
+        var chart_data = {{ pos_data_m|safe }}[1];
+        gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+
+            tooltips: {
+                backgroundColor: '#f5f5f5',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(29,140,248,0.0)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        suggestedMin: 60,
+                        suggestedMax: 125,
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(225,78,202,0.1)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }]
+            }
+        };
+        var ctx = document.getElementById("MPositive").getContext('2d');
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+        var config = {
+            type: 'line',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    label: "Tweets",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#6ed33c',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#52d333',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: chart_data,
+                }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+        };
+        var myChartData = new Chart(ctx, config);
+        var chart_labels = {{ neg_data_m|safe }}[0];
+        var chart_data = {{ neg_data_m|safe }}[1];
+        gradientChartOptionsConfigurationWithTooltipPurple = {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+
+            tooltips: {
+                backgroundColor: '#f5f5f5',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(29,140,248,0.0)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        suggestedMin: 60,
+                        suggestedMax: 125,
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: 'rgba(225,78,202,0.1)',
+                        zeroLineColor: "transparent",
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9a9a9a"
+                    }
+                }]
+            }
+        };
+        var ctx = document.getElementById("MNegative").getContext('2d');
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
+        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
+        var config = {
+            type: 'line',
+            data: {
+                labels: chart_labels,
+                datasets: [{
+                    label: "Tweets",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    borderColor: '#d30511',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    pointBackgroundColor: '#d30015',
+                    pointBorderColor: 'rgba(255,255,255,0)',
+                    pointHoverBackgroundColor: '#d346b1',
+                    pointBorderWidth: 20,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 15,
+                    pointRadius: 4,
+                    data: chart_data,
+                }]
+            },
+            options: gradientChartOptionsConfigurationWithTooltipPurple
+        };
+        var myChartData = new Chart(ctx, config);
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+    </script>
+{% endblock javascripts %}
