@@ -14,6 +14,7 @@ The results between different machine learning models are also compared.
 The different preprocessing steps are also described which are done to
 ensure maximum accuracy and efficacy. The sentiment analysis results can be used by managements to
 take timely actions for improving the future customer experience and avoiding customer churn.
+Our proposed system shows true effectiveness as it presents the results obtained on a user friendly dashboard allowing the business stakeholders to view results without any hassle. With this, we have also integrated an intelligent chatbot that that accommodates for differences in syntax of questioning grammar but is still able to return a relevant response based on keywords in the query via Natural Language Processing (NLP).
 
 
 ---
@@ -34,4 +35,7 @@ take timely actions for improving the future customer experience and avoiding cu
 
 [![Demo Video](https://github.com/Aksh97/Sentiment/blob/master/Miscellaneous/screen.png)](https://youtu.be/dAP6SnTM71U)
 
+---
+## SECTION 5 : Report
 
+[View Report](https://github.com/Aksh97/Sentiment/blob/master/Report/Telecom_Sentinel-Report.pdf)
